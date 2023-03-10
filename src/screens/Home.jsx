@@ -6,8 +6,7 @@ import React from "react";
 export default function Home() {
   const [data, setData] = useState([]);
   const [item, setItems] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
-  const [buttonText, setSelectedCat] = useState(null);
+  const [buttonText, setSelectedCat] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -19,8 +18,9 @@ export default function Home() {
         setData(data.sort((a, b) => b.price - a.price));
       } else if (item === "least expensive") {
         setData(data.sort((a, b) => a.price - b.price));
-      } else {
-        setData(data);
+      } 
+      else{
+        setData(data)
       }
     }
 
@@ -33,14 +33,14 @@ export default function Home() {
         "https://fake-store-api-production-c25d.up.railway.app/items"
       );
       const res = await response.json();
-      if (buttonText != null) {
+      if (buttonText !== "" ) {
         const fx = res.filter(
           (category) => category.category === `${buttonText}`
         );
         console.log(fx);
         setData(fx);
-      } else{
-        
+      } else {
+        setData(res)
       }
     }
     fetchcats();
@@ -56,7 +56,8 @@ export default function Home() {
     setItems("least expensive");
   };
   const clearFilter = () => {
-    setItems("clear");
+    setItems("")
+    setSelectedCat("")
   };
 
   const handleCategoryClick = (event) => {
