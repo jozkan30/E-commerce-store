@@ -1,0 +1,20 @@
+.filters{
+display: inline;
+
+
+}
+
+.buttons{
+    padding: 10px;
+    background-color: white;
+    border-style: none;
+    box-sizing: content-box;
+    color: rgb(0, 0, 238); 
+    cursor: pointer;
+    display: inline;
+}
+
+
+.buttons:hover{
+background-color: aqua;
+}
