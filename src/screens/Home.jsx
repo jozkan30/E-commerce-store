@@ -1,12 +1,12 @@
 import "./home.css";
 import ItemCard from "../components/ItemCard.jsx";
 import { useEffect, useState } from "react";
-import Filters from "../components/Filters";
 import React from "react";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [item, setItems] = useState("");
+  const [selectedCat, setselectedCat]= useState("")
 
   useEffect(() => {
     async function fetchData() {
@@ -21,52 +21,48 @@ export default function Home() {
       } else {
         setData(data);
       }
-
-
-
-
-
+      
 
     }
     fetchData();
   }, [item]);
 
+  const categories = Array.from(
+    new Set(data.map((item) => item.category.toUpperCase()))
+  );
 
-
-  const categories = Array.from(new Set(data.map((item) => item.category.toUpperCase())));
-    
-  console.log(categories);
   // Sort Buttons
-  let filterByMost = () => {
+
+  const filterByMost = () => {
     setItems("most expensive");
   };
-  let filterByLeast = () => {
+  const filterByLeast = () => {
     setItems("least expensive");
   };
-  let clearFilter = () => {
+  const clearFilter = (event) => {
     setItems("clear");
+    console.log(event.target.innerText);
+  };
+
+  const handleCategoryClick = (event) => {
+    const buttonText = event.target.innerText;
+    console.log(buttonText);
   };
 
   return (
     <div className="main container">
-        <div className="cats">
-          {categories.map((category, index) => (
-            <Filters category={category} />
-          ))}
-        
-        </div>
-        <div className="button-container">
+      <div className="button-container">
+        {categories.map((category) => (
+          <button onClick={handleCategoryClick}> {category}</button>
+        ))}
         <button className="filterBox" onClick={filterByMost}>
-          {" "}
-          Most Expensive{" "}
+          Most Expensive
         </button>
         <button className="filterBox" onClick={filterByLeast}>
-          {" "}
-          Least Expensive{" "}
+          Least Expensive
         </button>
         <button className="filterBox" onClick={clearFilter}>
-          {" "}
-          Clear Filters{" "}
+          Clear Filters
         </button>
       </div>
       <div className="item-listings">
