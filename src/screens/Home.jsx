@@ -21,12 +21,20 @@ export default function Home() {
       } else {
         setData(data);
       }
+
+
+
+
+
+
     }
     fetchData();
   }, [item]);
 
-  const categories = Array.from(new Set(data.map((item) => item.category)));
 
+
+  const categories = Array.from(new Set(data.map((item) => item.category.toUpperCase())));
+    
   console.log(categories);
   // Sort Buttons
   let filterByMost = () => {
@@ -47,7 +55,7 @@ export default function Home() {
           ))}
         
         </div>
-        <div>
+        <div className="button-container">
         <button className="filterBox" onClick={filterByMost}>
           {" "}
           Most Expensive{" "}
