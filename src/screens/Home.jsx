@@ -39,7 +39,9 @@ export default function Home() {
         );
         console.log(fx);
         setData(fx);
-      } 
+      } else{
+        
+      }
     }
     fetchcats();
   }, [buttonText]);
