@@ -6,7 +6,8 @@ import React from "react";
 export default function Home() {
   const [data, setData] = useState([]);
   const [item, setItems] = useState("");
-  const [selectedCat, setselectedCat]= useState("")
+  const [filteredData, setFilteredData] = useState([]);
+  const [buttonText, setSelectedCat] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -21,34 +22,45 @@ export default function Home() {
       } else {
         setData(data);
       }
-      
-
     }
+
     fetchData();
   }, [item]);
 
-  const categories = Array.from(
-    new Set(data.map((item) => item.category.toUpperCase()))
-  );
+  useEffect(() => {
+    async function fetchcats() {
+      const response = await fetch(
+        "https://fake-store-api-production-c25d.up.railway.app/items"
+      );
+      const res = await response.json();
+      if (buttonText != null) {
+        const fx = res.filter(
+          (category) => category.category === `${buttonText}`
+        );
+        console.log(fx);
+        setData(fx);
+      } 
+    }
+    fetchcats();
+  }, [buttonText]);
+
+  const categories = Array.from(new Set(data.map((item) => item.category)));
 
   // Sort Buttons
-
   const filterByMost = () => {
     setItems("most expensive");
   };
   const filterByLeast = () => {
     setItems("least expensive");
   };
-  const clearFilter = (event) => {
+  const clearFilter = () => {
     setItems("clear");
-    console.log(event.target.innerText);
   };
 
   const handleCategoryClick = (event) => {
-    const buttonText = event.target.innerText;
-    console.log(buttonText);
+    const text = event.target.innerText;
+    setSelectedCat(text);
   };
-
   return (
     <div className="main container">
       <div className="button-container">
