@@ -18,9 +18,8 @@ export default function Home() {
         setData(data.sort((a, b) => b.price - a.price));
       } else if (item === "least expensive") {
         setData(data.sort((a, b) => a.price - b.price));
-      } 
-      else{
-        setData(data)
+      } else {
+        setData(data);
       }
     }
 
@@ -33,14 +32,14 @@ export default function Home() {
         "https://fake-store-api-production-c25d.up.railway.app/items"
       );
       const res = await response.json();
-      if (buttonText !== "" ) {
+      if (buttonText !== "") {
         const fx = res.filter(
           (category) => category.category === `${buttonText}`
         );
         console.log(fx);
         setData(fx);
       } else {
-        setData(res)
+        setData(res);
       }
     }
     fetchcats();
@@ -56,8 +55,8 @@ export default function Home() {
     setItems("least expensive");
   };
   const clearFilter = () => {
-    setItems("")
-    setSelectedCat("")
+    setItems("");
+    setSelectedCat("");
   };
 
   const handleCategoryClick = (event) => {
@@ -68,8 +67,11 @@ export default function Home() {
     <div className="main container">
       <div className="button-container">
         {categories.map((category) => (
-          <button onClick={handleCategoryClick}> {category}</button>
+          <button className="category-buttons" onClick={handleCategoryClick}> {category}</button>
         ))}
+        </div>
+        <br />
+        <div className="price-sort">
         <button className="filterBox" onClick={filterByMost}>
           Most Expensive
         </button>

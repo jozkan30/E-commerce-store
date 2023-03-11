@@ -14,8 +14,26 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   align-items: center;
+ 
 }
 
 .filterBox {
   text-align: center;
+  
+}
+
+.price-sort{
+  display: flex;
+ align-items: center;
+ justify-content: space-evenly;
+  
+}
+
+.category-buttons{
+  background-color: rgba(0,0,0,0);
+  border-color: rgb(0, 0, 238);
+  border-style: none;
+  box-sizing: content-box;
+  color: rgb(0, 0, 238); 
+  cursor: pointer;
 }

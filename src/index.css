@@ -14,4 +14,6 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+    background-image: radial-gradient(#330c6d 2px, #e5e5f7 2px);
+
 }
