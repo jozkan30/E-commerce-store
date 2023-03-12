@@ -8,12 +8,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+  background-color: #ebebeb;
+  background-image:  radial-gradient(#a888d9 1.05px, transparent 1.05px), radial-gradient(#a888d9 1.05px, #ebebeb 1.05px);
+  background-size: 42px 42px;
+  background-position: 0 0,21px 21px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-    background-image: radial-gradient(#330c6d 2px, #e5e5f7 2px);
 
 }

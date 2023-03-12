@@ -64,7 +64,7 @@ export default function Home() {
     setSelectedCat(text);
   };
   return (
-    <div className="main container">
+    <div className="main-container">
       <div className="button-container">
         {categories.map((category) => (
           <button className="category-buttons" onClick={handleCategoryClick}> {category}</button>
@@ -80,6 +80,9 @@ export default function Home() {
         </button>
         <button className="filterBox" onClick={clearFilter}>
           Clear Filters
+        </button>
+        <button className="filterBox"> <a href="#hello"> items </a>
+          
         </button>
       </div>
       <div className="item-listings">
