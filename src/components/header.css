@@ -1,12 +1,27 @@
 
 .header-card{
 display: flex;
-flex-direction: row;
-justify-content: space-between;
-
-
+align-items: center;
+justify-content:center;
+background-color: #ebebeb;
+padding: 1rem;
 }
 
 #e-comm{
-    text-align: center;
+  margin-top: -5rem;
+  margin-right: 1rem;
+  font-size: 4rem;
+}
+
+  .header-img{
+    width: 40%;
+    height: 35%;
+  }
+
+  
+  @media only screen and (max-width: 900px){
+    #e-comm {
+      margin-top: -5rem;
+      font-size: 3rem;
+    }
   }
