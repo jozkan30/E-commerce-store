@@ -2,6 +2,7 @@ import "./home.css";
 import ItemCard from "../components/ItemCard.jsx";
 import { useEffect, useState } from "react";
 import React from "react";
+import Header from "../components/Header";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -65,6 +66,8 @@ export default function Home() {
   };
   return (
     <div className="main-container">
+      <Header />
+      <br/>
       <div className="button-container">
         {categories.map((category) => (
           <button className="category-buttons" onClick={handleCategoryClick}> {category}</button>
