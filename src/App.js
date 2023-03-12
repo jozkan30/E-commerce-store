@@ -1,9 +1,19 @@
 import Home from './screens/Home.jsx';
 import './app.css'
+import { Routes, Route } from "react-router-dom";
+import Nav from './components/Nav.jsx';
+
+
+
 function App() {
   return (
     <div className='main'>
-    <Home />
+    <Nav />
+    <main>
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
+    </main>
     </div>
   );
 }

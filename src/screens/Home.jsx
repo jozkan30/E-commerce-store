@@ -66,7 +66,7 @@ export default function Home() {
   };
   return (
     <div className="main-container">
-      <br/>
+      
       <Header />
       <br/>
       <div className="button-container">
