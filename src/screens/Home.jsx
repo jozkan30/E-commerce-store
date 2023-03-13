@@ -66,16 +66,18 @@ export default function Home() {
   };
   return (
     <div className="main-container">
-      
       <Header />
-      <br/>
+      <br />
       <div className="button-container">
         {categories.map((category) => (
-          <button className="category-buttons" onClick={handleCategoryClick}> {category}</button>
+          <button className="category-buttons" onClick={handleCategoryClick}>
+            {" "}
+            {category}
+          </button>
         ))}
-        </div>
-        <br />
-        <div className="price-sort">
+      </div>
+      <br />
+      <div className="price-sort">
         <button className="filterBox" onClick={filterByMost}>
           Most Expensive
         </button>
@@ -85,11 +87,8 @@ export default function Home() {
         <button className="filterBox" onClick={clearFilter}>
           Clear Filters
         </button>
-        <button className="filterBox"> <a href="#hello"> items </a>
-          
-        </button>
       </div>
-      <div className="item-listings">
+      <div className="item-listings" id="allItems">
         {data.map((item) => (
           <ItemCard
             img={item.image}
