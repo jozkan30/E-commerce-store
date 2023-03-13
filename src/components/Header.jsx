@@ -23,7 +23,7 @@ export default function Header() {
         id="img"
         src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
         alt="1"
-        // https://secure.img1-fg.wfcdn.com/im/97493477/resize-h800-w800%5Ecompr-r85/2111/211149099/Domenique+41.3%27%27+Wide+Rolling+Kitchen+Cart+with+Solid+Wood+Top.jpg
+      
       />
       </div>
      <div className="head-card-2">
