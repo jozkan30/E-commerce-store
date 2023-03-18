@@ -1,5 +1,13 @@
 .navBar {
-    background-color: #4a4646; /* set the background color to a dark gray */
+    border: solid;
+    padding: 10px;
     height: 100%;
     font-size: 2rem;
   }
+  .navBarInfo{
+    text-decoration: none;
+    color: black;
+    }
+#cart{
+  float: right;
+}

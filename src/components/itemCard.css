@@ -14,8 +14,17 @@
   height: 70%;
 }
 .card-info {
-  list-style-type: none;
+  color: black;
 }
 #price {
   font-weight: bold;
+}
+#link{
+  text-decoration: none;
+  color: black;
+  
+}
+
+.card-info:hover{
+color: rgb(105, 6, 245);
 }

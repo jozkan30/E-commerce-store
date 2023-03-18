@@ -1,15 +1,17 @@
 import React from "react";
-import './itemCard.css';
-import { Link } from "react-router-dom"
-export default function ItemCard(props) {
+import "./itemCard.css";
+import { Link } from "react-router-dom";
 
+export default function ItemCard({ title, price, image, id }) {
   return (
-    <div className="main-card" key={props.id}>  
-        <img className="item-card-img" src={props.img} alt="item-pic"/>
-        <Link to={`/${props.id}`}>
-        <p className="card-info">{props.title} </p>
-        </Link>
-        <p className="card-info" id="price">{props.price} </p>
+    <div className="main-card" key={id}>
+      <Link to={`/${id}`} id="link">
+        <img className="item-card-img" src={image} alt="item-pic" />
+        <p className="card-info">{title}</p>
+        <p className="card-info" id="price">
+          $ {price}{" "}
+        </p>
+      </Link>
     </div>
   );
 }
