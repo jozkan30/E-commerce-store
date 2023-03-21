@@ -16,7 +16,7 @@
   align-items: center;
   border: solid;
   border-radius: 10px;
-  padding:10px
+  padding: 10px;
 }
 
 .filterBox {
@@ -36,21 +36,23 @@
   box-sizing: content-box;
   cursor: pointer;
 }
-.category-buttons:hover{
-  box-shadow:rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+.category-buttons:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
-.cat-container{
+.cat-container {
   display: flex;
   justify-content: space-evenly;
- 
 }
 
-.cats{
+.cats {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  margin-top: 2rem;
 }
 
-.cats:hover{
+.cats:hover {
   background-color: rgb(0, 0, 0, 0.3);
 }
