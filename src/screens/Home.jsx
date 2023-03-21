@@ -1,102 +1,95 @@
 import "./home.css";
 import ItemCard from "../components/ItemCard.jsx";
 import { useEffect, useState } from "react";
+import { getItems } from "../services/item";
+
 import React from "react";
 import Header from "../components/Header";
 
 export default function Home() {
-  const [data, setData] = useState([]);
-  const [item, setItems] = useState("");
-  const [buttonText, setSelectedCat] = useState("");
+  const [item, setItems] = useState([]);
+  const [sortItems, setSortItems] = useState("");
+  const [buttonText, setbButtonText] = useState("");
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        "https://fake-store-api-production-c25d.up.railway.app/items"
-      );
-      const data = await response.json();
-      if (item === "most expensive") {
-        setData(data.sort((a, b) => b.price - a.price));
-      } else if (item === "least expensive") {
-        setData(data.sort((a, b) => a.price - b.price));
-      } else {
-        setData(data);
-      }
-    }
-
     fetchData();
-  }, [item]);
+      
+  }, [sortItems, buttonText]);
 
-  useEffect(() => {
-    async function fetchcats() {
-      const response = await fetch(
-        "https://fake-store-api-production-c25d.up.railway.app/items"
-      );
-      const res = await response.json();
-      if (buttonText !== "") {
-        const fx = res.filter(
-          (category) => category.category === `${buttonText}`
-        );
-        console.log(fx);
-        setData(fx);
-      } else {
-        setData(res);
+  async function fetchData() {
+    const data  = await getItems();
+    if(sortItems === "most expensive"){
+      setItems(data.sort((a,b)=> b.price - a.price))
+    } else if (sortItems=== "least expensive"){
+        setItems(data.sort((a,b)=> a.price - b.price))
+      } else if(sortItems === ""){
+        setItems(data)
+      } else{
+        setItems(data)
       }
     }
-    fetchcats();
-  }, [buttonText]);
+  
+    async function filterByCategory(){
+      const data =  await getItems();
+      if(buttonText !== ""){
+        setItems(data.filter((category)=> category.category === `${buttonText}`) )
+      } 
+      filterByCategory()
+    }
 
-  const categories = Array.from(new Set(data.map((item) => item.category)));
 
+
+
+    const categories = Array.from(new Set(item.map((category) => category.category)));
+    console.log(categories)
+  
   // Sort Buttons
-  const filterByMost = () => {
-    setItems("most expensive");
+  const sortByMost = () => {
+   setSortItems("most expensive");
   };
-  const filterByLeast = () => {
-    setItems("least expensive");
+  const sortByLeast = () => {
+    setSortItems("least expensive");
   };
-  const clearFilter = () => {
-    setItems("");
-    setSelectedCat("");
+  const clearSortAndFilter = () => {
+    setSortItems("");
+    setbButtonText("");
   };
 
   const handleCategoryClick = (event) => {
     const text = event.target.innerText;
-    setSelectedCat(text);
+    setbButtonText(text);
   };
   return (
     <div className="main-container">
       <Header />
-      <br />
-      <div className="button-container">
-        {categories.map((category) => (
-          <button className="category-buttons" onClick={handleCategoryClick}>
-            {" "}
-            {category}
-          </button>
-        ))}
-      </div>
+      {categories.map((info)=>(
+        <button onClick={handleCategoryClick}>{info}</button>
+      ))}
       <br />
       <div className="price-sort">
-        <button className="filterBox" onClick={filterByMost}>
+        <button className="filterBox" onClick={sortByMost}>
           Most Expensive
         </button>
-        <button className="filterBox" onClick={filterByLeast}>
+        <button className="filterBox" onClick={sortByLeast}>
           Least Expensive
         </button>
-        <button className="filterBox" onClick={clearFilter}>
+        <button className="filterBox" onClick={clearSortAndFilter}>
           Clear Filters
         </button>
       </div>
       <div className="item-listings" id="allItems">
-        {data.map((item) => (
+        {item.map((info)=>(
           <ItemCard
-            img={item.image}
-            id={item._id}
-            title={item.title}
-            price={`From $${item.price}`}
-          />
+          id={`${info._id}`}
+          image={info.image} 
+          title={info.title}
+          price={info.price}
+           />
+
         ))}
+
+
+
       </div>
     </div>
   );

@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
-
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { getItem } from "../services/item.js";
+import ListingDetailCard from "../components/ListingDeatailCard.jsx";
 export default function ListingDetail() {
-const [detail, setDetail] = useState({})
-let {id} = useParams
-useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        "https://fake-store-api-production-c25d.up.railway.app/items"
-      );
-      const item = await response.json();
-      setDetail(item)  
-    }
+  const [itemDetail, setItemDetail] = useState([]);
 
-    fetchData();
+  let { id } = useParams();
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    fetchItem();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function fetchData() {
-    let oneItem = await setDetail(id);
-    setDetail(oneItem)
+  async function fetchItem() {
+    let oneItem = await getItem(id);
+    setItemDetail(oneItem);
   }
-
-
-return (
-    <div>
-    
-    
+  return (
+    <div className="main-listing-detail">
+     <ListingDetailCard 
+     title={itemDetail.title}
+     cat={itemDetail.category}
+     image={itemDetail.image}
+     desc={itemDetail.description}
+     price={` $ ${itemDetail.price}`}
+     />
     </div>
-  )
+  );
 }
