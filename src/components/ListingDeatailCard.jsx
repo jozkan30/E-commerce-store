@@ -7,7 +7,7 @@ export default function ListingDetailCard({title, desc,image, cat, price}) {
     <span> {cat} </span>
     <img className="detail-img" src={image} alt="LDC" />
     <div className="desc">
-    <p>{desc}</p>
+    <p className="desc">{desc}</p>
     </div>
     <p className="price">{price}</p>
   </div>

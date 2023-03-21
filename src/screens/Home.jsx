@@ -13,6 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchData();
+    filterByCategory();
       
   }, [sortItems, buttonText]);
 
@@ -34,7 +35,6 @@ export default function Home() {
       if(buttonText !== ""){
         setItems(data.filter((category)=> category.category === `${buttonText}`) )
       } 
-      filterByCategory()
     }
 
 
@@ -62,9 +62,11 @@ export default function Home() {
   return (
     <div className="main-container">
       <Header />
+      <div className="cat-container">
       {categories.map((info)=>(
-        <button onClick={handleCategoryClick}>{info}</button>
+        <button className="cats" onClick={handleCategoryClick}>{info}</button>
       ))}
+      </div>
       <br />
       <div className="price-sort">
         <button className="filterBox" onClick={sortByMost}>
