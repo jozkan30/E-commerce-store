@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     fetchData();
     filterByCategory();
-  }, [sortItems, buttonText]);
+  }, [sortItems, buttonText, filterByCategory]);
 
   async function fetchData() {
     const data = await getItems();
